@@ -39,13 +39,13 @@ int main(void)
     int count;
 
     /* Array holding the waveform output data */
-    uint8_t values[5] = {
-        0x0F, 0x0E, 0x0C, 0x08, 0x00
+    uint8_t values[5] = {      //each value is an 8 bit unsigned integer, array called values, [5] array contains 5 elements
+        0x0F, 0x0E, 0x0C, 0x08, 0x00   //stores all combinations of high and low 
     };
 
     /* Array holding the duration of each waveform phase */
-    uint32_t duration[5] = {
-        60, 20, 20, 20, 80
+    uint32_t duration[5] = {  //same again but 32-bit unsigned integer
+        60, 20, 20, 20, 80  //tells the program how long to hold the corresponding waveform partern 
     };
 
     /* Configure all four GPIO pins as outputs */
