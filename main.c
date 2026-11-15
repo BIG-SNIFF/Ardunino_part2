@@ -1,7 +1,3 @@
-/* waveform generation - Part 2 */
-
-/* main.c */
-
 #include <zephyr/kernel.h>   
 #include <zephyr/drivers/gpio.h>
 #include <stdint.h>
@@ -49,21 +45,21 @@ int main(void)
     };
 
     /* Configure all four GPIO pins as outputs */
-    gpio_pin_configure_dt(&bit0, GPIO_OUTPUT_INACTIVE);
-    gpio_pin_configure_dt(&bit1, GPIO_OUTPUT_INACTIVE);
-    gpio_pin_configure_dt(&bit2, GPIO_OUTPUT_INACTIVE);
-    gpio_pin_configure_dt(&bit3, GPIO_OUTPUT_INACTIVE);
+    gpio_pin_configure_dt(&bit0, GPIO_OUTPUT_INACTIVE);   //Configures the first GPIO pin as an output and initially switches it off 
+    gpio_pin_configure_dt(&bit1, GPIO_OUTPUT_INACTIVE);   //Configures the second GPIO pin as an output and initially switches it off
+    gpio_pin_configure_dt(&bit2, GPIO_OUTPUT_INACTIVE);   //Configures the third GPIO pin as an output and initially switches it off
+    gpio_pin_configure_dt(&bit3, GPIO_OUTPUT_INACTIVE);   //Configures the fourth GPIO pin as an output and initially switches it off
 
     /* Repeat the waveform continuously */
-    while (1) {
+    while (1) {    //creates a while loop which keeps the waveform generation running continuously until its told to stop
 
-        for (count = 0; count < 5; count++) {
+        for (count = 0; count < 5; count++) {   //Creates a for loop which works through the 5 waveforms pattern once at a time 
 
             /* Write the waveform data to the output pins */
-            write_bus(values[count]);
+            write_bus(values[count]);   //we call the 'write_bus' function and passes the current waveform value in the function.
 
             /* Wait for the duration of the current phase */
-            k_sleep(K_MSEC(duration[count]));
+            k_sleep(K_MSEC(duration[count]));  //Controlls how long the waveform pattern will stay on the GPIO output before moving onto the next pattern
         }
     }
 
